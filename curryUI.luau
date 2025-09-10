@@ -69,14 +69,6 @@ local curry = {}
         item.PaddingTop = UDim.new(0, 9)
     end
 
-    function curry:middlelist(obj)
-        local item = Instance.new("UIListLayout", obj)
-        item.HorizontalAlignment = Enum.HorizontalAlignment.Center
-        item.VerticalAlignment = Enum.VerticalAlignment.Center
-        item.FillDirection = Enum.FillDirection.Horizontal
-        item.Padding = UDim.new(0, 9)
-    end
-
     function curry:itemlist(obj)
         local item = Instance.new("UIListLayout", obj)
         item.HorizontalAlignment = Enum.HorizontalAlignment.Center
@@ -85,9 +77,9 @@ local curry = {}
         item.Padding = UDim.new(0, 9)
     end
 
-    function curry:leftlist(obj)
+    function curry:list(obj, type)
         local item = Instance.new("UIListLayout", obj)
-        item.HorizontalAlignment = Enum.HorizontalAlignment.Left
+        item.HorizontalAlignment = type
         item.VerticalAlignment = Enum.VerticalAlignment.Center
         item.FillDirection = Enum.FillDirection.Horizontal
         item.Padding = UDim.new(0, 9)
@@ -136,7 +128,7 @@ function curry:start()
         tabholderframe.Transparency = 0.4
         curry:stroke(tabholderframe)
         curry:radius(tabholderframe, 8)
-        curry:leftlist(tabholderframe)
+        curry:list(tabholderframe, Enum.HorizontalAlignment.Left)
         curry:padleft(tabholderframe)
 
         local pagesholder = Instance.new("Frame", window)
@@ -144,7 +136,7 @@ function curry:start()
         pagesholder.Position = UDim2.new(0, 0, 0, 70)
         pagesholder.BackgroundColor3 = Color3.fromRGB(152, 152, 152)
         pagesholder.Transparency = 1
-        curry:middlelist(pagesholder)
+        curry:list(pagesholder, Enum.HorizontalAlignment.Center)
 
         local pages = {}
 
